@@ -9,32 +9,32 @@
 int score = 0;
 void print_score(score)
 {
-int gd=DETECT,gm;
-initgraph(&gd,&gm,"C:\\TURBOC3\\BGI");
-circle(327,199,30);
-line(304,199,349,199);
-printf("\n\n\n\n\n\n\tYour score is:\n");
-gotoxy(41,12);
-printf("%d",score);
-gotoxy(41,14);
-printf("25");
-getch();
-closegraph();
-exit(0);
+	int gd=DETECT,gm;
+	initgraph(&gd,&gm,"C:\\TURBOC3\\BGI");
+	circle(327,199,30);
+	line(304,199,349,199);
+	printf("\n\n\n\n\n\n\tYour score is:\n");
+	gotoxy(41,12);
+	printf("%d",score);
+	gotoxy(41,14);
+	printf("25");
+	getch();
+	closegraph();
+	exit(0);
 }
 // #######################  ClearScreen  ##################################
 
 void ClearScreen()
 {
-    clrscr();
-
-    printf("\t\t\t\tWELCOME TO QUIZ\n\n");
+	clrscr();
+	printf("\t\t\t\tWELCOME TO QUIZ\n\n");
 }
 
 
 // #######################  Instructions Page  #########################
 char instructions()
-{       char ch;
+{   
+    char ch;
     ClearScreen();
 
     printf("\n\n\t\t\t\t INSTRUCTIONS ");
@@ -49,8 +49,8 @@ char instructions()
 }
 
 //#########################  STRUCTURE DEFINITION  #######################
-struct Node{
-
+struct Node
+{
   struct Node *left;
   struct Node *right;
   char Quest[100];      //The Question
@@ -89,19 +89,17 @@ struct Node *create( char Ques[], char key ,char option1[],char option2[],char o
  struct Node *insert( struct Node *root, struct Node *ptr)
 {
     if(!root)
-       root = ptr;
-
+    	root = ptr;
     else if(ptr->rating < root->rating)
-    root->left = insert(root->left , ptr);
+    	root->left = insert(root->left , ptr);
     else
-    root->right = insert(root->right, ptr);
+    	root->right = insert(root->right, ptr);
     return root;
-
- }
+}
 
 // #######################   DRIVER FUNCTION   ############################
 void run(struct Node *root)
-{  // int d=10;
+{ 
     char ans;
     if(root)
     {
@@ -118,7 +116,8 @@ void run(struct Node *root)
 	scanf( "  %c",&ans);
 	fflush(stdin);
 	if(toupper(ans)==root->key)
-	{   score+=5;
+	{  
+	    score+=5;
 	    printf("Right answer!   :)");
 	    getch();
 	    run(root->right);
@@ -161,7 +160,7 @@ root = create(ques,'C',option1,option2,option3,option4,10);
     ptr = create(ques,'B',option1,option2,option3,option4,5);
 root = insert( root, ptr );
 
-    strcpy(ques,"How many planets are in our solar syatem?");
+    strcpy(ques,"How many planets are in our solar system?");
     strcpy(option1,"A.  9");
     strcpy(option2,"B.  8");
     strcpy(option3,"C.  10");
@@ -169,7 +168,7 @@ root = insert( root, ptr );
     ptr = create(ques,'A',option1,option2,option3,option4,15);
 root = insert( root, ptr );
 
-    strcpy(ques,"In which of the following decades did Hiroshima and Nagasaki bombing incident happen?");
+    strcpy(ques,"In which of the following decades did Hiroshima and Nagasaki bombing\n\t\t  incident happen?");
     strcpy(option1,"A) 1930s");
     strcpy(option2,"B) 1940s");
     strcpy(option3,"C) 1950s");
@@ -177,7 +176,7 @@ root = insert( root, ptr );
     ptr = create(ques,'B',option1,option2,option3,option4,3);
 root = insert( root, ptr );
 
-    strcpy(ques,"Which of the following european countries did NOT participate in World War 2?");
+    strcpy(ques,"Which of the following european countries did NOT participate\n\t\t  in World War 2?");
     strcpy(option1,"A) Romania");
     strcpy(option2,"B) Hungary");
     strcpy(option3,"C) Sweden");
@@ -193,7 +192,7 @@ root = insert( root, ptr );
     ptr = create(ques,'D',option1,option2,option3,option4,13);
 root = insert( root, ptr );
 
-    strcpy(ques,"Which one of following Indians was never elected to become India's Prime Minister?");
+    strcpy(ques,"Which one of following Indians was never elected to become\n\t\t  India's Prime Minister?");
     strcpy(option1,"A) Atal Bihari Vajpayee");
     strcpy(option2,"B) Rajiv Gandhi");
     strcpy(option3,"C) A.P.J. Abdul Kalam");
@@ -217,7 +216,7 @@ root = insert( root, ptr );
     ptr = create(ques,'A',option1,option2,option3,option4,4);
 root = insert( root, ptr );
 
-    strcpy(ques,"In which year was the popular english rock band named Pink Floyd formed?");
+    strcpy(ques,"In which year was the popular english rock band named\n\t\t  Pink Floyd formed?");
     strcpy(option1,"A) 1955");
     strcpy(option2,"B) 1965");
     strcpy(option3,"C) 1975");
@@ -225,7 +224,7 @@ root = insert( root, ptr );
     ptr = create(ques,'B',option1,option2,option3,option4,6);
 root = insert( root, ptr );
 
-    strcpy(ques,"In which year did the popular Indian singer Arijit Singh start his music career?");
+    strcpy(ques,"In which year did the popular Indian singer Arijit Singh\n\t\t  start his music career?");
     strcpy(option1,"A) 2004");
     strcpy(option2,"B) 2007");
     strcpy(option3,"C) 2010");
@@ -233,7 +232,7 @@ root = insert( root, ptr );
     ptr = create(ques,'B',option1,option2,option3,option4,8);
 root = insert( root, ptr );
 
-    strcpy(ques,"In which decade did the classic music composer named Ludwig van Beethoven die?");
+    strcpy(ques,"In which decade did the classic music composer named\n\t\t  Ludwig van Beethoven die?");
     strcpy(option1,"A) 1800s");
     strcpy(option2,"B) 1810s");
     strcpy(option3,"C) 1820s");
@@ -241,7 +240,7 @@ root = insert( root, ptr );
     ptr = create(ques,'C',option1,option2,option3,option4,11);
 root = insert( root, ptr );
 
-    strcpy(ques,"Which one of the following countries have NOT landed humans on moon yet?");
+    strcpy(ques,"Which one of the following countries have NOT landed\n\t\t humans on moon yet?");
     strcpy(option1,"A) China");
     strcpy(option2,"B) United States");
     strcpy(option3,"C) Russia");
@@ -265,7 +264,7 @@ root = insert( root, ptr );
     ptr = create(ques,'A',option1,option2,option3,option4,18);
 root = insert( root, ptr );
 
-    strcpy(ques,"Which one of the countries has the smallest Gross Domestic Product(GDP)?");
+    strcpy(ques,"Which one of the countries has the smallest\n\t\t Gross Domestic Product(GDP)?");
     strcpy(option1,"A) India");
     strcpy(option2,"B) China");
     strcpy(option3,"C) United Kingdom");
@@ -297,7 +296,7 @@ root = insert( root, ptr );
     ptr = create(ques,'D',option1,option2,option3,option4,4);
 root = insert( root, ptr );
 
-    strcpy(ques,"Which one of the following countries is the the most advanced in terms of technology?");
+    strcpy(ques,"Which one of the following countries is the most advanced in\n\t\t terms of technology?");
     strcpy(option1,"A) Canada");
     strcpy(option2,"B) India");
     strcpy(option3,"C) Germany");
@@ -305,7 +304,7 @@ root = insert( root, ptr );
     ptr = create(ques,'C',option1,option2,option3,option4,5);
 root = insert( root, ptr );
 
-    strcpy(ques,"Which one of the following animals is the largest in size?");
+    strcpy(ques,"Which one of the following animals is the largest in\n\t\t size?");
     strcpy(option1,"A) Colossal Squid");
     strcpy(option2,"B) Giraffe");
     strcpy(option3,"C) African Elephant");
@@ -377,7 +376,7 @@ root = insert( root, ptr );
     ptr = create(ques,'C',option1,option2,option3,option4,16);
 root = insert( root, ptr );
 
-    strcpy(ques,"Which one of the following animal species is the deadliest to humans?");
+    strcpy(ques,"Which one of the following animal species is the\n\t\t  deadliest to humans?");
     strcpy(option1,"A) Snakes");
     strcpy(option2,"B) Tapeworms");
     strcpy(option3,"C) Humans themselves");
@@ -385,7 +384,7 @@ root = insert( root, ptr );
     ptr = create(ques,'C',option1,option2,option3,option4,17);
 root = insert( root, ptr );
 
-    strcpy(ques,"Which one of the following religions in India is the LEAST populated?");
+    strcpy(ques,"Which one of the following religions in India is the\n\t\t  LEAST populated?");
     strcpy(option1,"A) Sikhs");
     strcpy(option2,"B) Jains");
     strcpy(option3,"C) Christians");
@@ -394,15 +393,18 @@ root = insert( root, ptr );
 root = insert( root, ptr );
 
     ch = instructions();
-
     if(ch=='Y'|| ch=='y')
-    {   run(root);
+    {  
+	run(root);
 	clrscr();
 	print_score(score);
-       }
+    }
 
     else
+    {
 	printf("\n\t\t\t\t Thanks for coming Here!");
-getch();
+	getch();
+	exit(0);
+    }
 return 0;
 }

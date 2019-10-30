@@ -20,6 +20,7 @@ gotoxy(41,14);
 printf("25");
 getch();
 closegraph();
+exit(0);
 }
 // #######################  ClearScreen  ##################################
 
@@ -43,6 +44,7 @@ char instructions()
     printf("\n\t 4. Each correct answer is rewarded with +5 and wrong answer with -1.");
     printf("\n\n\n\n\t\t\tWant to Play the Quiz(Y/N).\n");
     scanf("%s",&ch);
+    fflush(stdin);
     return ch;
 }
 
@@ -103,9 +105,9 @@ void run(struct Node *root)
     char ans;
     if(root)
     {
-        ClearScreen();             // Clear Screen for every NEW Question.
-        printf("\n\n\t%s\n\n",root->Quest);
-        delay(1000);
+	ClearScreen();             // Clear Screen for every NEW Question.
+	printf("\n\n\t\t\t%s\n\n",root->Quest);
+	delay(1000);
 	printf("\t\t%s",root->option1);
 	delay(1000);
 	printf("\t\t\t%s",root->option2);
@@ -113,22 +115,22 @@ void run(struct Node *root)
 	printf("\n\n\t\t%s",root->option3);
 	delay(1000);
 	printf("\t\t\t%s\n\n",root->option4);
-        scanf( "  %c",&ans);
-
-        if(toupper(ans)==root->key)
-        {   score+=5;
-            printf("Right answer!   :)");
-            getch();
-            run(root->right);
-        }
-        else
-        {
-            score--;
-            printf("Wrong answer    :(");
-            printf("\n\nThe right answer was option %c\n",root->key);
-            getch();
-            run(root->left);
-        }
+	scanf( "  %c",&ans);
+	fflush(stdin);
+	if(toupper(ans)==root->key)
+	{   score+=5;
+	    printf("Right answer!   :)");
+	    getch();
+	    run(root->right);
+	}
+	else
+	{
+	    score--;
+	    printf("Wrong answer    :(");
+	    printf("\n\nThe right answer was option %c\n",root->key);
+	    getch();
+	    run(root->left);
+	}
     }
 }
 
@@ -143,14 +145,14 @@ int main()
   char ch,ques[100],option1[80],option2[80],option3[80],option4[80];
   struct Node *root = NULL;
   struct Node *ptr = NULL;
-    
+
     strcpy(ques,"What is the boiling point of water in F?");
     strcpy(option1,"A.  198");
     strcpy(option2,"B.  206");
     strcpy(option3,"C.  212");
     strcpy(option4,"D.  219");
 root = create(ques,'C',option1,option2,option3,option4,10);
-    
+
     strcpy(ques,"How many players are in a cricket team?");
     strcpy(option1,"A.  10");
     strcpy(option2,"B.  11");
@@ -174,7 +176,7 @@ root = insert( root, ptr );
     strcpy(option4,"D) 1960s");
     ptr = create(ques,'B',option1,option2,option3,option4,3);
 root = insert( root, ptr );
-    
+
     strcpy(ques,"Which of the following european countries did NOT participate in World War 2?");
     strcpy(option1,"A) Romania");
     strcpy(option2,"B) Hungary");
@@ -182,7 +184,7 @@ root = insert( root, ptr );
     strcpy(option4,"D) Bulgaria");
     ptr = create(ques,'C',option1,option2,option3,option4,7);
 root = insert( root, ptr );
-    
+
     strcpy(ques,"In which of the following countries, Google Maps is NOT banned?");
     strcpy(option1,"A) Iran");
     strcpy(option2,"B) North Korea");
@@ -395,12 +397,12 @@ root = insert( root, ptr );
 
     if(ch=='Y'|| ch=='y')
     {   run(root);
-        clrscr();
-        print_score(score);
+	clrscr();
+	print_score(score);
        }
 
     else
-    	printf("\n\t\t\t\t Thanks for coming Here!");
+	printf("\n\t\t\t\t Thanks for coming Here!");
 getch();
 return 0;
 }

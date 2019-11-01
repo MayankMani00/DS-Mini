@@ -5,12 +5,12 @@
 #include<dos.h>
 #include<time.h>
 #include<graphics.h>
-
+//C:\\TURBOC3\\BGI
 int score = 0;
 void print_score(score)
 {
 	int gd=DETECT,gm;
-	initgraph(&gd,&gm,"C:\\TURBOC3\\BGI");
+	initgraph(&gd,&gm,"");
 	circle(327,199,30);
 	line(304,199,349,199);
 	printf("\n\n\n\n\n\n\tYour score is:\n");

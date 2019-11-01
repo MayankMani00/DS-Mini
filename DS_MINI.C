@@ -38,7 +38,7 @@ char instructions()
     ClearScreen();
 
     printf("\n\n\t\t\t\t INSTRUCTIONS ");
-    printf("\n\t 1. Quiz contains total 10 Questions");
+    printf("\n\t 1. Quiz contains total 5 Questions");
     printf("\n\t 2. Each Question has 4 options in which one is correct.");
     printf("\n\t 3. Each question has a associated rating which tells its difficulty level.");
     printf("\n\t 4. Each correct answer is rewarded with +5 and wrong answer with -1.");

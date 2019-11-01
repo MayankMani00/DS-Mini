@@ -5,12 +5,12 @@
 #include<dos.h>
 #include<time.h>
 #include<graphics.h>
-//C:\\TURBOC3\\BGI
+//C:\\TC\\BGI
 int score = 0;
 void print_score(score)
 {
 	int gd=DETECT,gm;
-	initgraph(&gd,&gm,"");
+	initgraph(&gd,&gm,"C:\\TC\\BGI");
 	circle(327,199,30);
 	line(304,199,349,199);
 	printf("\n\n\n\n\n\n\tYour score is:\n");
@@ -40,7 +40,7 @@ char instructions()
     printf("\n\n\t\t\t\t INSTRUCTIONS ");
     printf("\n\t 1. Quiz contains total 10 Questions");
     printf("\n\t 2. Each Question has 4 options in which one is correct.");
-    printf("\n\t 3. Each question has a defined Rating which tells its difficulty level.");
+    printf("\n\t 3. Each question has a associated rating which tells its difficulty level.");
     printf("\n\t 4. Each correct answer is rewarded with +5 and wrong answer with -1.");
     printf("\n\n\n\n\t\t\tWant to Play the Quiz(Y/N).\n");
     scanf("%s",&ch);
